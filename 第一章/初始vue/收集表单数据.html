@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../vue.js"></script>
+</head>
+<body>
+    <div id="demo">
+        <form @submit.prevent="demo">
+        账号:<input type="text" v-model="userInfo.username"><br>
+        密码:<input type="text" v-model="userInfo.password"><br>
+        性别： 男<input type="radio" name="xingbie" v-model="userInfo.sex" value="男" >&nbsp;
+        女<input type="radio" name="xingbie" v-model="userInfo.sex" value="女"><br>
+        爱好： 抽烟<input type="checkbox"  name="aihao" v-model="userInfo.hobby" value="抽烟">&nbsp;
+        喝酒<input type="checkbox" name="aihao" v-model="userInfo.hobby" value="喝酒">&nbsp;
+        烫头<input type="checkbox" name="aihao" v-model="userInfo.hobby" value="烫头">&nbsp;<br>
+        所属校区：
+        <select v-model="userInfo.city">
+            <option value="">请选择校区</option>
+            <option value="广州">广州</option>
+            <option value="上海">上海</option>
+            <option value="北京">北京</option>
+        </select><br>
+        其他信息：<textarea rows="10px"  v-model.lazy.trim="userInfo.other"></textarea><br><br>
+        <input type="checkbox" name="阅读">阅读并接受
+        <a href="http://www.atguigu.com">用户协议</a>
+        <button>提交</button>
+    </form>
+    </div>
+    <script type="text/javascript">
+        Vue.config.productionTip = false;
+        new Vue({
+            el: '#demo',
+            data: {
+                userInfo:{
+                username:'',
+                password:'',
+               hobby:["抽烟"],
+               city:'北京',
+               other:'',
+               sex:''
+                }
+
+            },
+            methods: {
+				demo(){
+					console.log(JSON.stringify(this.userInfo))
+				}
+            }
+            
+        });
+    </script>
+</body>
+</html>
